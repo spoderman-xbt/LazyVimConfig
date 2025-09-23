@@ -15,11 +15,28 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+
   spec = {
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+    { import = "lazyvim.plugins.extras.lang.python" },
+    { import = "lazyvim.plugins.extras.lang.typescript" },
+    { import = "lazyvim.plugins.extras.lang.json" },
     -- import/override with your plugins
     { import = "plugins" },
+    {
+      "NeogitOrg/neogit",
+      dependencies = {
+        "nvim-lua/plenary.nvim", -- required
+        "sindrets/diffview.nvim", -- optional - Diff integration
+
+        -- Only one of these is needed.
+        "nvim-telescope/telescope.nvim", -- optional
+        "ibhagwan/fzf-lua", -- optional
+        "echasnovski/mini.pick", -- optional
+        "folke/snacks.nvim", -- optional
+      },
+    },
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
