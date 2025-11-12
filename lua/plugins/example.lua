@@ -40,6 +40,18 @@ return {
     end,
   },
 
+  -- Make TokyoNight Transparent (doesn't work seemingly)
+  {
+    "folke/tokyonight.nvim",
+    opts = {
+      transparent = true,
+      styles = {
+        sidebars = "transparent",
+        floats = "transparent",
+      },
+    },
+  },
+
   -- change some telescope options and a keymap to browse plugin files
   {
     "nvim-telescope/telescope.nvim",
@@ -219,6 +231,7 @@ return {
       },
     },
   },
+
 }
 
 -- save darcula colorscheme code
