@@ -16,3 +16,5 @@ vim.keymap.set("n", "<S-Tab>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next bu
 
 -- remap Ctrl+v for vertical block mode to Alt+v (which are swapped with my linux system settings so it makes it like it was before)
 vim.keymap.set('n', '<A-v>', '<C-v>', { desc = 'Remap Alt+v to Ctrl+v' })
+
+vim.keymap.set('n', '<leader>j', vim.lsp.buf.hover, {})
