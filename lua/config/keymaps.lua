@@ -24,7 +24,8 @@ vim.keymap.set('n', '<A-b>', '<C-b>')
 vim.keymap.set('n', '<leader>j', vim.lsp.buf.hover, {})
 --
 -- Duplicate selected lines
-vim.keymap.set("v", "<leader>d", "y'>p", { noremap = true, silent = true })
+vim.keymap.set("v", "<C-d>", "y'>p", { noremap = true, silent = true })
+-- vim.keymap.set("v", "<leader>d", "y'>p", { noremap = true, silent = true })
 
 -- make grep search for any line that contain the search terms, e.g. "test rpc" will yield "test_local_rpc"
 -- local function custom_grep()
