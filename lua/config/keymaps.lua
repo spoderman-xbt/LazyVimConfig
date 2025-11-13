@@ -18,3 +18,12 @@ vim.keymap.set("n", "<S-Tab>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next bu
 vim.keymap.set('n', '<A-v>', '<C-v>', { desc = 'Remap Alt+v to Ctrl+v' })
 
 vim.keymap.set('n', '<leader>j', vim.lsp.buf.hover, {})
+
+-- make grep search for any line that contain the search terms, e.g. "test rpc" will yield "test_local_rpc"
+-- local function custom_grep()
+--   local input = vim.fn.input("Search: ")
+--   local pattern = input:gsub(" ", ".*")
+--   vim.cmd(string.format("Telescope grep_string search='%s'", pattern))
+-- end
+--
+-- vim.keymap.set("n", "<leader>/", custom_grep, { noremap = true, silent = false })

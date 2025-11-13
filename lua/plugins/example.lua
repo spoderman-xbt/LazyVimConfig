@@ -72,6 +72,16 @@ return {
         sorting_strategy = "ascending",
         winblend = 0,
       },
+      vimgrep_arguments = {
+        "rg",
+        "--color=never",
+        "--no-heading",
+        "--with-filename",
+        "--line-number",
+        "--column",
+        "--smart-case",
+        "--hidden",
+      },
     },
   },
 
@@ -197,17 +207,24 @@ return {
     },
   },
 
-require("lazy").setup({
-  {
-    "justjake/sneak.nvim",
-    config = function()
-      require("sneak").setup({
-        -- Disable the highlight after sneak
-        highlight = false,
-      })
-    end,
-  },
-})
+  -- {
+  --   "mtdl9/vim-log-highlighting",
+  --   ft = "log",
+  -- },
+
+  require("lazy").setup({
+    {
+      "justjake/sneak.nvim",
+      config = function()
+        require("sneak").setup({
+          -- Disable the highlight after sneak
+          highlight = false,
+        })
+      end,
+    },
+  }),
+
+  require("plugins.linting")
 
 }
 
