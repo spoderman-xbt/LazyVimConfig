@@ -40,18 +40,6 @@ return {
     end,
   },
 
-  -- Make TokyoNight Transparent (doesn't work seemingly)
-  {
-    "folke/tokyonight.nvim",
-    opts = {
-      transparent = true,
-      styles = {
-        sidebars = "transparent",
-        floats = "transparent",
-      },
-    },
-  },
-
   -- change some telescope options and a keymap to browse plugin files
   {
     "nvim-telescope/telescope.nvim",
@@ -94,11 +82,20 @@ return {
       servers = {
         -- pyright will be automatically installed with mason and loaded with lspconfig
         pyright = {},
+        ruff_lsp = {},
         vue_ls = {},
         vtsls = {},
       },
     },
   },
+
+  require("lspconfig").pyright.setup({
+    on_attach = function(client, bufnr)
+      -- Enable code actions
+      require("lspconfig").util.make_formatting_available(client, bufnr)
+      require("lspconfig").util.make_code_action_available(client, bufnr)
+    end,
+  }),
 
   -- Configure tsserver plugin
   {
@@ -226,15 +223,5 @@ return {
 
   require("plugins.linting")
 
+  -- TODO: Get mini.surround working so I can delete pernterhisis like ds(
 }
-
--- save darcula colorscheme code
--- return {
---   { "xiantang/darcula-dark.nvim", dependencies = { "nvim-treesitter/nvim-treesitter" } },
---   {
---     "LazyVim/LazyVim",
---     opts = {
---       colorscheme = "darcula-dark",
---     },
---   },
--- }

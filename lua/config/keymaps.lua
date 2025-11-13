@@ -17,6 +17,10 @@ vim.keymap.set("n", "<S-Tab>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next bu
 -- remap Ctrl+v for vertical block mode to Alt+v (which are swapped with my linux system settings so it makes it like it was before)
 vim.keymap.set('n', '<A-v>', '<C-v>', { desc = 'Remap Alt+v to Ctrl+v' })
 
+-- other remaps due to switching Fn keys on Linux
+vim.keymap.set('n', '<A-f>', '<C-f>')
+vim.keymap.set('n', '<A-b>', '<C-b>')
+
 vim.keymap.set('n', '<leader>j', vim.lsp.buf.hover, {})
 
 -- make grep search for any line that contain the search terms, e.g. "test rpc" will yield "test_local_rpc"
