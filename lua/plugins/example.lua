@@ -97,6 +97,30 @@ return {
     end,
   }),
 
+  require("lspconfig").pylsp.setup({
+    settings = {
+        pylsp = {
+          plugins = {
+            pylsp_mypy = {
+              enabled = true,
+              -- Optional: Pass extra args (e.g., use venv Python)
+              overrides = { "--install-types ", "--non-interactive" },
+              report_progress = true,
+              live_mode = true, -- set to true for real-time checks
+            },
+            pylint = {
+              enabled = true
+            },
+          }
+        }
+      },
+    on_attach = function(client, bufnr)
+      -- Enable code actions
+      require("lspconfig").util.make_formatting_available(client, bufnr)
+      require("lspconfig").util.make_code_action_available(client, bufnr)
+    end,
+  }),
+
   -- Configure tsserver plugin
   {
     "neovim/nvim-lspconfig",
