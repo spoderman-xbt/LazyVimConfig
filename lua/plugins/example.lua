@@ -78,8 +78,12 @@ return {
               live_mode = true, -- set to true for real-time checks
             },
             pylint = {
-              enabled = true
+              enabled = true,
+              args = { "--rcfile", "./.pylint.rc" }
             },
+            pycodestyle = {
+            ignore = { "E501" }
+          }
           }
         }
       },
