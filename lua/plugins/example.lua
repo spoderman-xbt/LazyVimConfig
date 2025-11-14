@@ -9,16 +9,6 @@
 -- * disable/enabled LazyVim plugins
 -- * override the configuration of LazyVim plugins
 return {
-  -- change trouble config
-  {
-    "folke/trouble.nvim",
-    -- opts will be merged with the parent spec
-    opts = { use_diagnostic_signs = true },
-  },
-
-  -- disable trouble
-  { "folke/trouble.nvim", enabled = false },
-
   -- override nvim-cmp and add cmp-emoji
   {
     "hrsh7th/nvim-cmp",
@@ -62,29 +52,19 @@ return {
     },
   },
 
-  -- add pyright to lspconfig
   {
     "neovim/nvim-lspconfig",
     ---@class PluginLspOpts
     opts = {
       --@type lspconfig.options
       servers = {
-        -- pyright will be automatically installed with mason and loaded with lspconfig
-        pyright = {},
+        pyright = {},  -- pyright will be automatically installed with mason and loaded with lspconfig
         ruff_lsp = {},
         vue_ls = {},
         vtsls = {},
       },
     },
   },
-
-  require("lspconfig").pyright.setup({
-    on_attach = function(client, bufnr)
-      -- Enable code actions
-      -- require("lspconfig").util.make_formatting_available(client, bufnr)
-      -- require("lspconfig").util.make_code_action_available(client, bufnr)
-    end,
-  }),
 
   require("lspconfig").pylsp.setup({
     settings = {
@@ -110,6 +90,15 @@ return {
     end,
   }),
 
+  require("lspconfig").pyright.setup({
+    on_attach = function(client, bufnr)
+      -- Enable code actions
+      -- require("lspconfig").util.make_formatting_available(client, bufnr)
+      -- require("lspconfig").util.make_code_action_available(client, bufnr)
+    end,
+  }),
+
+
   -- Configure tsserver plugin
   {
     "neovim/nvim-lspconfig",
@@ -130,7 +119,6 @@ return {
   -- for typescript, LazyVim also includes extra specs to properly setup lspconfig,
   -- treesitter, mason and typescript.nvim. So instead of the above, you can use:
   { import = "lazyvim.plugins.extras.lang.typescript" },
-
   { import = "lazyvim.plugins.extras.lang.vue" },
 
 
@@ -171,30 +159,6 @@ return {
         "vue",
         "css"
       })
-    end,
-  },
-
-  -- the opts function can also be used to change the default opts:
-  {
-    "nvim-lualine/lualine.nvim",
-    event = "VeryLazy",
-    opts = function(_, opts)
-      table.insert(opts.sections.lualine_x, {
-        function()
-          return "😄"
-        end,
-      })
-    end,
-  },
-
-  -- or you can return new options to override all the defaults
-  {
-    "nvim-lualine/lualine.nvim",
-    event = "VeryLazy",
-    opts = function()
-      return {
-        --[[add your custom lualine config here]]
-      }
     end,
   },
 
