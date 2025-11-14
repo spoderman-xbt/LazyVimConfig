@@ -85,8 +85,8 @@ return {
       },
     on_attach = function(client, bufnr)
       -- Enable code actions
-      require("lspconfig").util.make_formatting_available(client, bufnr)
-      require("lspconfig").util.make_code_action_available(client, bufnr)
+      -- require("lspconfig").util.make_formatting_available(client, bufnr)
+      -- require("lspconfig").util.make_code_action_available(client, bufnr)
     end,
   }),
 
