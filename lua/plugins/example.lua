@@ -1,6 +1,6 @@
 -- since this is just an example spec, don't actually load anything here and return an empty spec
 -- stylua: ignore
-if true then return {} end
+-- if true then return {} end
 
 -- every spec file under the "plugins" directory will be loaded automatically by lazy.nvim
 --
@@ -9,17 +9,6 @@ if true then return {} end
 -- * disable/enabled LazyVim plugins
 -- * override the configuration of LazyVim plugins
 return {
-  -- add gruvbox
-  { "ellisonleao/gruvbox.nvim" },
-
-  -- Configure LazyVim to load gruvbox
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "gruvbox",
-    },
-  },
-
   -- change trouble config
   {
     "folke/trouble.nvim",
@@ -92,8 +81,8 @@ return {
   require("lspconfig").pyright.setup({
     on_attach = function(client, bufnr)
       -- Enable code actions
-      require("lspconfig").util.make_formatting_available(client, bufnr)
-      require("lspconfig").util.make_code_action_available(client, bufnr)
+      -- require("lspconfig").util.make_formatting_available(client, bufnr)
+      -- require("lspconfig").util.make_code_action_available(client, bufnr)
     end,
   }),
 
@@ -228,22 +217,10 @@ return {
     },
   },
 
-  -- {
-  --   "mtdl9/vim-log-highlighting",
-  --   ft = "log",
-  -- },
-
-  require("lazy").setup({
-    {
-      "justjake/sneak.nvim",
-      config = function()
-        require("sneak").setup({
-          -- Disable the highlight after sneak
-          highlight = false,
-        })
-      end,
-    },
-  }),
+  {
+    "mtdl9/vim-log-highlighting",
+    ft = "log",
+  },
 
   require("plugins.linting")
 
