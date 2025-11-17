@@ -75,4 +75,8 @@ require("lazy").setup({
     end,
   },
 
+  -- auto-import
+  -- { "stevanmilic/nvim-lspimport" },
+  -- vim.keymap.set("n", "<leader>i", require("lspimport").import, { noremap = true })
+
 })

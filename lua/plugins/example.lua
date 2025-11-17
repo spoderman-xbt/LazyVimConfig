@@ -9,16 +9,29 @@
 -- * disable/enabled LazyVim plugins
 -- * override the configuration of LazyVim plugins
 return {
+  -- lazyvim uses Blink by default for variable suggestions.
   -- override nvim-cmp and add cmp-emoji
-  {
-    "hrsh7th/nvim-cmp",
-    dependencies = { "hrsh7th/cmp-emoji" },
-    ---@param opts cmp.ConfigSchema
-    opts = function(_, opts)
-      table.insert(opts.sources, { name = "emoji" })
-    end,
-  },
+  -- {
+  --   "hrsh7th/nvim-cmp",
+  --   dependencies = { "hrsh7th/cmp-emoji" },
+  --   ---@param opts cmp.ConfigSchema
+  --   opts = function(_, opts)
+  --     table.insert(opts.sources, { name = "emoji" })
+  --   end,
+  -- },
 
+  {
+    "saghen/blink.cmp",
+    opts = {
+      keymap = {
+        preset = "super-tab", -- enables Tab to select and confirm
+        -- or define custom keys
+        ["<C-j>"] = { "select_next" },
+        ["<C-k>"] = { "select_prev" },
+      },
+    },
+  },
+ 
   -- change some telescope options and a keymap to browse plugin files
   {
     "nvim-telescope/telescope.nvim",
@@ -66,33 +79,34 @@ return {
     },
   },
 
-  require("lspconfig").pylsp.setup({
-    settings = {
-        pylsp = {
-          plugins = {
-            pylsp_mypy = {
-              enabled = true,
-              -- Optional: Pass extra args (e.g., use venv Python)
-              overrides = { "--install-types ", "--non-interactive" },
-              report_progress = true,
-              live_mode = true, -- set to true for real-time checks
-            },
-            pylint = {
-              enabled = true,
-              args = { "--rcfile", "./.pylint.rc" }
-            },
-            pycodestyle = {
-            ignore = { "E501" }
-          }
-          }
-        }
-      },
-    on_attach = function(client, bufnr)
-      -- Enable code actions
-      -- require("lspconfig").util.make_formatting_available(client, bufnr)
-      -- require("lspconfig").util.make_code_action_available(client, bufnr)
-    end,
-  }),
+  -- COMMENTED OUT AS i WAS GETTING WARNINGS
+  -- require("lspconfig").pylsp.setup({
+  --   settings = {
+  --       pylsp = {
+  --         plugins = {
+  --           pylsp_mypy = {
+  --             enabled = true,
+  --             -- Optional: Pass extra args (e.g., use venv Python)
+  --             overrides = { "--install-types ", "--non-interactive" },
+  --             report_progress = true,
+  --             live_mode = true, -- set to true for real-time checks
+  --           },
+  --           pylint = {
+  --             enabled = true,
+  --             args = { "--rcfile", "./.pylint.rc" }
+  --           },
+  --           pycodestyle = {
+  --           ignore = { "E501" }
+  --         }
+  --         }
+  --       }
+  --     },
+  --   on_attach = function(client, bufnr)
+  --     -- Enable code actions
+  --     -- require("lspconfig").util.make_formatting_available(client, bufnr)
+  --     -- require("lspconfig").util.make_code_action_available(client, bufnr)
+  --   end,
+  -- }),
 
   require("lspconfig").pyright.setup({
     on_attach = function(client, bufnr)
@@ -189,7 +203,6 @@ return {
     "mtdl9/vim-log-highlighting",
     ft = "log",
   },
-
   require("plugins.linting")
 
   -- TODO: Get mini.surround working so I can delete pernterhisis like ds(
