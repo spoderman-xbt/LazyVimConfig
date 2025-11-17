@@ -67,6 +67,7 @@ require("lazy").setup({
 
   {
     "justjake/sneak.nvim",
+    enabled = false,
     config = function()
       require("sneak").setup({
         -- Disable the highlight after sneak

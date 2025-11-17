@@ -203,7 +203,13 @@ return {
     "mtdl9/vim-log-highlighting",
     ft = "log",
   },
-  require("plugins.linting")
 
-  -- TODO: Get mini.surround working so I can delete pernterhisis like ds(
+  {
+    'nvim-mini/mini.nvim', version = '*',
+    mappings = {
+      delete = 'ds'
+    }
+  },
+
+  require("plugins.linting")
 }
