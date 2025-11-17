@@ -31,7 +31,7 @@ return {
       },
     },
   },
- 
+
   -- change some telescope options and a keymap to browse plugin files
   {
     "nvim-telescope/telescope.nvim",
@@ -204,12 +204,13 @@ return {
     ft = "log",
   },
 
-  {
-    'nvim-mini/mini.nvim', version = '*',
-    mappings = {
-      delete = 'ds'
-    }
-  },
+  -- TODO: Get surround working so I can delete () like "ds(". Currently flash.nvim interefers with it since "s" is picked up no matter what
+  -- {
+  --   'nvim-mini/mini.nvim', version = '*',
+  --   mappings = {
+  --     delete = 'ds'
+  --   }
+  -- },
 
   require("plugins.linting")
 }
