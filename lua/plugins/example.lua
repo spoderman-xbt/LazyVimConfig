@@ -71,44 +71,12 @@ return {
     opts = {
       --@type lspconfig.options
       servers = {
-        basedpyright = {},  -- pyright will be automatically installed with mason and loaded with lspconfig
         ruff_lsp = {},
         vue_ls = {},
         vtsls = {},
       },
     },
   },
-
-  -- COMMENTED OUT AS i WAS GETTING WARNINGS
-  -- require("lspconfig").pylsp.setup({
-  --   settings = {
-  --       pylsp = {
-  --         plugins = {
-  --           pylsp_mypy = {
-  --             enabled = true,
-  --             -- Optional: Pass extra args (e.g., use venv Python)
-  --             overrides = { "--install-types ", "--non-interactive" },
-  --             report_progress = true,
-  --             live_mode = true, -- set to true for real-time checks
-  --           },
-  --           pylint = {
-  --             enabled = true,
-  --             args = { "--rcfile", "./.pylint.rc" }
-  --           },
-  --           pycodestyle = {
-  --           ignore = { "E501" }
-  --         }
-  --         }
-  --       }
-  --     },
-  --   on_attach = function(client, bufnr)
-  --     -- Enable code actions
-  --     -- require("lspconfig").util.make_formatting_available(client, bufnr)
-  --     -- require("lspconfig").util.make_code_action_available(client, bufnr)
-  --   end,
-  -- }),
-
-  vim.lsp.enable("basedpyright"),
 
   -- Configure tsserver plugin
   {
@@ -181,7 +149,7 @@ return {
 
   -- add any tools you want to have installed below
   {
-    "williamboman/mason.nvim",
+    "mason.org/mason.nvim",
     opts = {
       ensure_installed = {
         "stylua",
