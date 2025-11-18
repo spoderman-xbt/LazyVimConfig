@@ -116,7 +116,6 @@ return {
     end,
   }),
 
-
   -- Configure tsserver plugin
   {
     "neovim/nvim-lspconfig",
@@ -212,5 +211,10 @@ return {
   --   }
   -- },
 
-  require("plugins.linting")
+  require("plugins.linting"),
+
+  -- TODO:
+    -- bufferline
+    -- . for repeat action
+  -- being able to copy path of file (absolute, from sources root, from repo root etc.)
 }
