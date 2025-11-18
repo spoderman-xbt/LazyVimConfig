@@ -71,7 +71,7 @@ return {
     opts = {
       --@type lspconfig.options
       servers = {
-        pyright = {},  -- pyright will be automatically installed with mason and loaded with lspconfig
+        basedpyright = {},  -- pyright will be automatically installed with mason and loaded with lspconfig
         ruff_lsp = {},
         vue_ls = {},
         vtsls = {},
@@ -108,13 +108,7 @@ return {
   --   end,
   -- }),
 
-  require("lspconfig").pyright.setup({
-    on_attach = function(client, bufnr)
-      -- Enable code actions
-      -- require("lspconfig").util.make_formatting_available(client, bufnr)
-      -- require("lspconfig").util.make_code_action_available(client, bufnr)
-    end,
-  }),
+  vim.lsp.enable("basedpyright"),
 
   -- Configure tsserver plugin
   {
