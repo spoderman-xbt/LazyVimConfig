@@ -29,6 +29,8 @@ vim.keymap.set("v", "<C-d>", "y'>p", { noremap = true, silent = true })
 
 vim.keymap.set('n', '<leader>td', ':tabclose<CR>', { silent = true })
 
+vim.keymap.set("n", ".", ".", { desc = "Repeat last change" })
+
 -- make grep search for any line that contain the search terms, e.g. "test rpc" will yield "test_local_rpc"
 -- local function custom_grep()
 --   local input = vim.fn.input("Search: ")
