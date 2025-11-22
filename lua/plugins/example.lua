@@ -208,7 +208,7 @@ return {
   require("plugins.linting"),
 
   -- TODO:
+  -- map Space+1 to Space + e to have it like gjhetbrains (maybe also +4 for terminal to run stuff and another one for git?)
     -- bufferline
-    -- . for repeat action
   -- being able to copy path of file (absolute, from sources root, from repo root etc.)
 }
